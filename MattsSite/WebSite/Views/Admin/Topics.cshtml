@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebSite.Models.Topic>
+
+@{
+    ViewBag.Title = "Topics";
+}
+
+<h2>Topics</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TopicToken)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TopicName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopicToken)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopicName)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Topic", new { id=item.TopicID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TopicID })
+        </td>
+    </tr>
+}
+
+</table>

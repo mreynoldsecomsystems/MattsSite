@@ -1,0 +1,62 @@
+﻿@model WebSite.Models.Topic
+
+@{
+    ViewBag.Title = "NewTopic";
+}
+
+<h2>NewTopic</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Topic</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TopicToken)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TopicToken)
+            @Html.ValidationMessageFor(model => model.TopicToken)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TopicName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TopicName)
+            @Html.ValidationMessageFor(model => model.TopicName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Body)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Body)
+            @Html.ValidationMessageFor(model => model.Body)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Topics")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $().ready(function () {
+            $('textarea.tinymce').tinymce({
+                script_url: '../Scripts/tinymce/jscripts/tiny_mce/tiny_mce.js',
+                theme: "advanced"
+
+            });
+        });
+    </script>
+
+}

@@ -27,5 +27,6 @@ namespace WebSite.Code
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<UserAvatar> UserAvatars { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Topic> Topics { get; set; }
     }
 }
