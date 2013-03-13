@@ -17,10 +17,7 @@ namespace WebSite.Code
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             this.Configuration.ProxyCreationEnabled = false;
-            if(!this.Database.Exists())
-            {
-                this.Database.Create();
-            }
+
             base.OnModelCreating(modelBuilder);
         }
 
