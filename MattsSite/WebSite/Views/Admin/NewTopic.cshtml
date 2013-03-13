@@ -33,7 +33,7 @@
             @Html.LabelFor(model => model.Body)
         </div>
         <div class="editor-field">
-            @Html.TextAreaFor(model => model.Body)
+            @Html.TextAreaFor(model => model.Body, new { @class = "tinymce" })
             @Html.ValidationMessageFor(model => model.Body)
         </div>
 
@@ -48,11 +48,13 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@*    @Scripts.Render("~/bundles/jqueryval")*@
+    <script src="~/Scripts/tinymce/tiny_mce.js"></script>
+    <script src="~/Scripts/tinymce/jquery.tinymce.js"></script>
     <script type="text/javascript">
         $().ready(function () {
             $('textarea.tinymce').tinymce({
-                script_url: '../Scripts/tinymce/jscripts/tiny_mce/tiny_mce.js',
+                script_url: '../Scripts/tinymce/tiny_mce.js',
                 theme: "advanced"
 
             });

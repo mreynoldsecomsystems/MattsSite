@@ -600,6 +600,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Topics.cshtml" />
     <Content Include="Views\Admin\Topic.cshtml" />
+    <Content Include="Views\Admin\NewTopic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
