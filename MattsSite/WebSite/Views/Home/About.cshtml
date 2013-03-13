@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "about";
+    bool isMatt = User.Identity.IsAuthenticated && User.Identity.Name == "mattR";
 }
 @section featured {
     <section class="featured">
@@ -15,10 +16,14 @@
     </section>
 }
 
-<article>
-    <p>
-        Use this area to provide additional information.
-    </p>
+<article contenteditable="@isMatt">
+    <div>
+        <h3>where i'm at now...</h3>
+        <p>
+            Since Thanksgiving of 2011, I have been employed at eComSystems, Inc. in Sarasota, FL. Working as part of a
+            collaborative team
+        </p>
+    </div>
 
     <p>
         Use this area to provide additional information.
@@ -40,3 +45,7 @@
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
     </ul>
 </aside>
+
+@section scripts{
+    
+}
