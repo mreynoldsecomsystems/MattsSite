@@ -15,9 +15,9 @@
         </div>
     </section>
 }
-
-<article contenteditable="@isMatt">
-    <div>
+<input type="hidden" value="@isMatt" id="isMatt" />
+<article>
+    <div contenteditable="inherit">
         <h3>where i'm at now...</h3>
         <p>
             Since Thanksgiving of 2011, I have been employed at eComSystems, Inc. in Sarasota, FL. Working as part of a
@@ -47,5 +47,13 @@
 </aside>
 
 @section scripts{
-    
+    <script type="text/javascript">
+        $(function () {
+            var isMatt = @Html.Raw(Json.Encode(@isMatt));
+            if(isMatt == true){
+                $("article").attr("contenteditable", true);
+            }
+
+        });
+    </script>
 }
