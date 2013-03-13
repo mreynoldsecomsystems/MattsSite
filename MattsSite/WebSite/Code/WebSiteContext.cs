@@ -10,7 +10,7 @@ namespace WebSite.Code
     public class WebSiteContext : DbContext
     {
         public WebSiteContext()
-            : base("name=WebSiteEntities")
+            : base("name=DefaultConnection")
         {
         }
 
