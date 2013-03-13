@@ -8,7 +8,7 @@ using WebSite.Models;
 
 namespace WebSite.Controllers
 {
-    [Authorize(Users = "mattR")]
+    //[Authorize(Users = "mattR")]
     public class AdminController : Controller
     {
         //
