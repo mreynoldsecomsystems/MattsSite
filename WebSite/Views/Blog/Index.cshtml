@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "matt's blog";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                
+            </p>
+        </div>
+    </section>
+}
+@Html.ActionLink("new post", "NewPost")
+<fieldset>
+    <legend>whoa... that's sweet</legend>
+    <div id="blogContainer">
+    </div>
+</fieldset>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            
+            var getData = function () {
+                var list;
+
+                $.ajax({
+                    url: "/Blog/GetBlogs",
+                    dataType: "html",
+                    type: "GET",
+                    success: function(data){
+                        list = data;
+                        $("#blogContainer").html(list);
+                        updateBlogs();
+                    }
+                });
+
+                return list;
+            };
+            var ldata = getData();
+            function updateBlogs() {
+                $("#blogContainer").html(ldata);
+            }
+
+            $(document).on("click", "#blogList li", function (evt) {
+                var blogID = $(evt.target).attr("blogid");
+                if (blogID) {
+                    window.location = "/Blog/BlogPost/" + blogID;
+                }
+            });
+        });
+    </script>
+}

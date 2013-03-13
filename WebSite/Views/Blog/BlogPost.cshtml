@@ -1,0 +1,11 @@
+﻿@model WebSite.Models.BlogPost
+
+@{
+    ViewBag.Title = "BlogPost";
+}
+
+<h2>@Model.Title</h2>
+<h5>@Model.Description</h5>
+
+@Html.Raw(Model.Message)
+

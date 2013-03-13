@@ -1,0 +1,273 @@
+﻿@model WebSite.Models.BlogPost
+
+@{
+    ViewBag.Title = "New Post";
+}
+
+<h2>NewPost</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>BlogPost</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div id="messageBox">
+            <div id="toolbox" style="height: 35px">
+                <span id="fontStyle" style="display: inline-block;">
+                    <input type="checkbox" id="bold" /><label for="bold"><b>B</b></label>
+                    <input type="checkbox" id="italic" /><label for="italic"><i>I</i></label>
+                    <input type="checkbox" id="underline" /><label for="underline"><u>U</u></label>
+                </span>
+                <span>
+                    <button id="fontSizeText">Default Size</button>
+                    <button id="fontSizeSelect" onclick="stayFocused">Select a font size</button>
+                </span>
+                <ul id="fontSize" style="width: 115px; max-height: 200px; overflow-x: scroll;">
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <li><a href="#">10</a></li>
+                    <li><a href="#">11</a></li>
+                    <li><a href="#">12</a></li>
+                    <li><a href="#">13</a></li>
+                    <li><a href="#">14</a></li>
+                    <li><a href="#">15</a></li>
+                    <li><a href="#">16</a></li>
+                    <li><a href="#">17</a></li>
+                    <li><a href="#">18</a></li>
+                    <li><a href="#">20</a></li>
+                    <li><a href="#">21</a></li>
+                    <li><a href="#">22</a></li>
+                    <li><a href="#">23</a></li>
+                    <li><a href="#">24</a></li>
+                    <li><a href="#">25</a></li>
+                    <li><a href="#">26</a></li>
+                </ul>
+                <span>
+                    <button id="fontFamText">Default Font</button>
+                    <button id="fontFamSelect">Select a font family</button>
+                </span>
+                <ul id="fontFam" style="max-height: 200px; max-width: 200px; overflow-x: auto;">
+                    <li><a href="#" style="font-family: 'Economica', sans-serif;" fontname="'Economica', sans-serif">Economica</a></li>
+                    <li><a href="#" style="font-family: 'Quintessential', cursive;" fontname="'Quintessential', cursive">Quintessential</a></li>
+                    <li><a href="#" style="font-family: 'Anaheim', sans-serif;" fontname="'Anaheim', sans-serif">Anaheim</a></li>
+                    <li><a href="#" style="font-family: 'Bad Script', cursive;" fontname="'Bad Script', cursive">Bad Script</a></li>
+                    <li><a href="#" style="font-family: 'Arimo', sans-serif;" fontname="'Arimo', sans-serif">Arimo</a></li>
+                    <li><a href="#" style="font-family: 'Frijole', cursive;" fontname="'Frijole', cursive">Frijole</a></li>
+                    <li><a href="#" style="font-family: 'Source Code Pro', sans-serif;" fontname="'Source Code Pro', sans-serif">Source Code Pro</a></li>
+                    <li><a href="#" style="font-family: 'Gloria Hallelujah', cursive;" fontname="'Gloria Hallelujah', cursive">Gloria Hallelujah</a></li>
+                    <li><a href="#" style="font-family: 'Calligraffitti', cursive;" fontname="'Calligraffitti', cursive">Calligraffitti</a></li>
+                    <li><a href="#" style="font-family: 'Clicker Script', cursive;" fontname="'Clicker Script', cursive">Clicker Script</a></li>
+                    <li><a href="#" style="font-family: 'Fjalla One', sans-serif;" fontname="'Fjalla One', sans-serif">Fjalla Ona</a></li>
+                    <li><a href="#" style="font-family: 'Geo', sans-serif;" fontname="'Geo', sans-serif">Geo</a></li>
+                    <li><a href="#" style="font-family: 'Open Sans', sans-serif;" fontname="'Open Sans', sans-serif">Open Sans</a></li>
+                    <li><a href="#" style="font-family: 'Roboto Condensed', sans-serif;" fontname="'Roboto Condensed', sans-serif">Roboto Condensed</a></li>
+                    <li><a href="#" style="font-family: 'Cuprum', sans-serif;" fontname="'Cuprum', sans-serif">Cuprum</a></li>
+                    <li><a href="#" style="font-family: 'Ewert', cursive;" fontname="'Ewert', cursive">Ewert</a></li>
+                    <li><a href="#" style="font-family: 'Marvel', sans-serif;" fontname="'Marvel', sans-serif">Marvel</a></li>
+                    <li><a href="#" style="font-family: 'Maven Pro', sans-serif;" fontname="'Maven Pro', sans-serif">Maven Pro</a></li>
+                    <li><a href="#" style="font-family: 'Nothing You Could Do', cursive;" fontname="'Nothing You Could Do', cursive">Nothing you could do</a></li>
+                    <li><a href="#" style="font-family: 'Dawning of a New Day', cursive;" fontname="'Dawning of a New Day', cursive">Dawning of a New Day</a></li>
+                    <li><a href="#" style="font-family: 'Advent Pro', sans-serif;" fontname="'Advent Pro', sans-serif">Advent Pro</a></li>
+                </ul>
+            </div>
+
+            <div id="editableContent" contenteditable="true" style="width: 100%; height: 100%;" class="content-edit"></div>
+        </div>
+
+        @Html.HiddenFor(m => m.Message)
+        @Html.HiddenFor(m => m.CreatedByID)
+        @Html.HiddenFor(m => m.CreatedDate)
+        @Html.HiddenFor(m => m.ModifiedByID)
+        @Html.HiddenFor(m => m.ModifiedDate)
+
+
+        <p>
+            <input type="button" id="createBtn" value="create" />
+            <input type="submit" value="Create" id="submit" hidden="hidden" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        function stayFocused() {
+            $("#editableContent").focus();
+        }
+
+        function indent() {
+            window.getSelection();
+            document.execCommand("Indent", false, false);
+        }
+
+        function outdent() {
+            window.getSelection();
+            document.execCommand("Outdent", false, false);
+        }
+
+        function paragraph() {
+            window.getSelection();
+            document.execCommand("InsertParagraph", false, false);
+        }
+
+        function code() {
+            var selection = window.getSelection();
+            var range = selection.getRangeAt(0);
+            if (range.commonAncestorContainer.nodeName == "CODE") {
+
+            } else {
+                range = document.createRange();
+                var elem = $(selection.getRangeAt(0).commonAncestorContainer).append("<code></code>");
+                
+                selection.removeAllRanges();
+                range.selectNode(elem[0]);
+                selection.addRange(range);
+            }
+
+        }
+
+
+        $(function () {
+
+            //$("#toolbox").draggable().css("display", "inline-block").hide();
+            $("#toolbox").contents().click(function () {
+                $("#editableContent").focus();
+            });
+            $("#fontSizeSelect").click(function () {
+                $("#editableContent").focus();
+            });
+
+            $("#createBtn").click(function () {
+                $("#Message").val($("#editableContent").html());
+                $("#submit").trigger("click");
+            });
+
+            $("#bold").button().click(function () {
+                window.getSelection();
+                document.execCommand("Bold", false, false);
+            });
+
+            $("#italic").button().click(function () {
+                window.getSelection();
+                document.execCommand("Italic", false, false);
+            });
+
+            $("#underline").button().click(function () {
+                window.getSelection();
+                document.execCommand("Underline", false, false);
+            });
+
+            $("#fontStyle").buttonset();
+
+            $("#editableContent").keypress(function(e) {
+                if (e.which == 13) {
+                    paragraph();
+                }
+            });
+            
+            $("#fontSizeText").button().click(function (evt) {
+
+            }).next().button({
+                text: false,
+                icons: {
+                    primary: "ui-icon-triangle-1-s"
+                }
+            }).click(function () {
+                stayFocused();
+                var menu = $(this).parent().next().show().position({
+                    my: "left top",
+                    at: "left bottom",
+                    of: this.previousElementSibling,
+                    offset: "-45 0"
+                });
+                $(document).one("click", function () {
+                    $("#editableContent").focus();
+                    menu.hide();
+                });
+                return false;
+            }).parent().buttonset().next().hide().menu();
+
+            $("#fontSize").find("a").click(function (evt) {
+                var size = $(evt.target).text() + "px";
+                var selection = window.getSelection();
+                var e = document.execCommand("FontSize", false, 7);
+                var range = selection.getRangeAt(0);
+                var parent = range.commonAncestorContainer.parentNode;
+                if (range.commonAncestorContainer.id == "editableContent" || parent.id == "editableContent") {
+                    $("#editableContainer").children("font")[0].css("font-size", size);
+                } else {
+                    range.commonAncestorContainer.style.fontSize = size;
+                }
+
+                $("#fontSizeText").children("span").text($(evt.target).text());
+                //$(.commonAncestorContainer.parentNode.parentElement).css("font-size", size);
+            });
+
+            $("#fontFam").find("a").click(function (evt) {
+                var font = $(evt.target).attr("fontName");
+                var selection = window.getSelection();
+                document.execCommand("FontName", false, font);
+                $("#fontFamText").children("span").text(font.split(",")[0].split("'").join(""));
+            });
+
+            $("#fontFamText").button().click(function (evt) {
+
+            }).next().button({
+                text: false,
+                icons: {
+                    primary: "ui-icon-triangle-1-s"
+                }
+            }).click(function () {
+                var menu = $(this).parent().next().show().position({
+                    my: "left top",
+                    at: "left bottom",
+                    of: this.previousElementSibling
+                });
+                $(document).one("click", function () {
+                    menu.hide();
+                });
+                return false;
+            }).parent().buttonset().next().hide().menu();
+
+            $("#messageBox").resizable();
+            $("#editableContent").focusout(function (evt) {
+                var e = $(evt.target);
+
+            });
+
+            $("#editableContent").click(function (evt) {
+                //$("#toolbox").show().position({
+                //    my: "center top",
+                //    at: "center top",
+                //    of: this,
+                //    offset: "-30 -35"
+                //});
+            });
+        });
+    </script>
+}

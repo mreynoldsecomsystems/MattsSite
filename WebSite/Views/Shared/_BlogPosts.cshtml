@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WebSite.Models.BlogPost>
+<ul id="blogList" style="list-style: none">
+    @foreach (var item in Model)
+    {
+        <li blogID="@item.BlogPostID" style="cursor: pointer;">
+            <span class="blog-list-title" style="font-size: 20px; margin-right: 20px;">@item.Title</span>
+            <span class="blog-list-description">@item.Description</span>
+            @{ string createdDate = item.CreatedDate.ToShortDateString();   }
+            <span class="blog-list-date">@createdDate</span>
+        </li>
+    }
+</ul>

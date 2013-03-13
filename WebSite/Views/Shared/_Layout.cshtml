@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Matt's Virtual Portfolio</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
+        @RenderSection("header", required: false)
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: { families: ['Economica:400,700,400italic,700italic:latin', 'Quintessential::latin', 'Anaheim::latin', 'Bad+Script::latin', 'Arimo:400,700,400italic,700italic:latin', 'Frijole::latin', 'Source+Code+Pro:200,400,700:latin', 'Gloria+Hallelujah::latin', 'Calligraffitti::latin', 'Clicker+Script::latin', 'Fjalla+One::latin', 'Geo:400,400italic:latin', 'Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700:latin', 'Roboto+Condensed:300italic,400italic,700italic,400,300,700:latin', 'Cuprum:400,400italic,700,700italic:latin', 'Ewert::latin', 'Marvel:400,400italic,700,700italic:latin', 'Maven+Pro:400,500,700,900:latin', 'Nothing+You+Could+Do::latin', 'Dawning+of+a+New+Day::latin', 'Advent+Pro:400,300,700:latin'] }
+            };
+            (function () {
+                var wf = document.createElement('script');
+                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                  '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })(); </script>
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("matt reynolds", "Index", "Home")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("about", "About", "Home")</li>
+                            <li>@Html.ActionLink("contact", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("blog", "Index", "Blog")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Matt Reynolds</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

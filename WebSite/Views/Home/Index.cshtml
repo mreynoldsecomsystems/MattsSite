@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "home page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                
+            </p>
+        </div>
+    </section>
+}
+<h3></h3>
+<article>
+<ol class="round">
+    <li class="one">
+        <h5>about me</h5>
+        <p>Basic info about where I've been, and what I've been doing the past few years.</p>
+        @Html.ActionLink("read more", "About", "Home")
+    </li>
+
+    <li class="two">
+        <h5>this is cool...</h5>
+        <p>A small collection of technology that interests me...</p>
+        @Html.ActionLink("view blog", "Index", "Blog")
+    </li>
+
+    <li class="three">
+        <h5>my hobbies and interests</h5>
+        <p>What makes me tick, and what I like to do when there's nothing to do...</p>
+        @Html.ActionLink("read more", "Hobbies", "Home")
+    </li>
+</ol>
+    </article>
+<aside>
+    <h3>tags</h3>
+    <div>
+
+    </div>
+</aside>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+    </script>
+}
