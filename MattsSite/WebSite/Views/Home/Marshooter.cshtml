@@ -241,9 +241,7 @@
         });
 
         if (isTouchDevice()) {
-            document.ontouchstart = function (e) {
-                e.preventDefault();
-            }
+           
 
             $("#shoot").click(function (evt) {
                 if (gun.ammo > 0) {
