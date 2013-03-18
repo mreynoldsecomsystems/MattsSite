@@ -241,13 +241,14 @@
         });
 
         if (isTouchDevice()) {
+            document.ontouchstart = function (e) {
+                e.preventDefault();
+            }
+
             $("#shoot").click(function (evt) {
                 if (gun.ammo > 0) {
                     gun.ammo -= 1;
-                    var coord = getMousePos(canvas, evt);
-                    var x = canvas.height - coord.x;
-                    var y = canvas.width - coord.y;
-                    var checkAim = willHitBird(x, y, birds);
+                    var checkAim = willHitBird(ball.x, ball.y, birds);
                     if (checkAim.hit) {
                         birds[checkAim.id].fill = "yellow";
 
