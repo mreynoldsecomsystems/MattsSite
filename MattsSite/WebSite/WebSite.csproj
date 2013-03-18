@@ -202,6 +202,10 @@
     <Compile Include="Migrations\201303131719463_AddTopic.Designer.cs">
       <DependentUpon>201303131719463_AddTopic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201303151935011_AddMetaDataTitle.cs" />
+    <Compile Include="Migrations\201303151935011_AddMetaDataTitle.Designer.cs">
+      <DependentUpon>201303151935011_AddMetaDataTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BlogModels.cs" />
@@ -209,6 +213,33 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\blank.gif" />
+    <Content Include="Content\colorpicker.css" />
+    <Content Include="Content\colorpicker_background.png" />
+    <Content Include="Content\colorpicker_hex.png" />
+    <Content Include="Content\colorpicker_hsb_b.png" />
+    <Content Include="Content\colorpicker_hsb_h.png" />
+    <Content Include="Content\colorpicker_hsb_s.png" />
+    <Content Include="Content\colorpicker_indic.gif" />
+    <Content Include="Content\colorpicker_overlay.png" />
+    <Content Include="Content\colorpicker_rgb_b.png" />
+    <Content Include="Content\colorpicker_rgb_g.png" />
+    <Content Include="Content\colorpicker_rgb_r.png" />
+    <Content Include="Content\colorpicker_select.gif" />
+    <Content Include="Content\colorpicker_submit.png" />
+    <Content Include="Content\custom_background.png" />
+    <Content Include="Content\custom_hex.png" />
+    <Content Include="Content\custom_hsb_b.png" />
+    <Content Include="Content\custom_hsb_h.png" />
+    <Content Include="Content\custom_hsb_s.png" />
+    <Content Include="Content\custom_indic.gif" />
+    <Content Include="Content\custom_rgb_b.png" />
+    <Content Include="Content\custom_rgb_g.png" />
+    <Content Include="Content\custom_rgb_r.png" />
+    <Content Include="Content\custom_submit.png" />
+    <Content Include="Content\select.png" />
+    <Content Include="Content\select2.png" />
+    <Content Include="Content\slider.png" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -277,6 +308,12 @@
     <None Include="Properties\PublishProfiles\mattreynolds84 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\mattreynolds84 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\colorpicker\colorpicker.js" />
+    <Content Include="Scripts\colorpicker\eye.js" />
+    <Content Include="Scripts\colorpicker\jquery.js" />
+    <Content Include="Scripts\colorpicker\layout.js" />
+    <Content Include="Scripts\colorpicker\utils.js" />
+    <Content Include="Scripts\editor.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -292,6 +329,8 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\nicEdit.js" />
+    <Content Include="Content\nicEditorIcons.gif" />
     <Content Include="Scripts\tinymce\jquery.tinymce.js" />
     <Content Include="Scripts\tinymce\langs\en.js" />
     <Content Include="Scripts\tinymce\license.txt" />
@@ -617,6 +656,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201303131719463_AddTopic.resx">
       <DependentUpon>201303131719463_AddTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303151935011_AddMetaDataTitle.resx">
+      <DependentUpon>201303151935011_AddMetaDataTitle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

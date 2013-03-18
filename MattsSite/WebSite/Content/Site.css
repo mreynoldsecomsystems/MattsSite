@@ -14,6 +14,33 @@ body {
     padding: 0;
 }
 
+#left-nav{
+    float: left;
+    width: 145px;
+    background: #45484d; /* Old browsers */
+    margin-top: 30px;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMTAwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMjEyMTIxIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzQ1NDg0ZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(45deg,  #212121 0%, #45484d 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#212121), color-stop(100%,#45484d)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(45deg,  #212121 0%,#45484d 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(45deg,  #212121 0%,#45484d 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(45deg,  #212121 0%,#45484d 100%); /* IE10+ */
+    background: linear-gradient(45deg,  #212121 0%,#45484d 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#212121', endColorstr='#45484d',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+
+    
+    height: 100%;
+}
+
+#left-nav ul{
+    text-align: left !important;
+}
+#left-nav ul li{
+    width: 100%;
+}
+#left-nav ul li a{
+    text-align: left;
+}
 #toolbox{
     background: #eeeeee; /* Old browsers */
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -80,7 +107,7 @@ mark {
 
 h1, h2, h3,
 h4, h5, h6 {
-    color: #000;
+    color: #333;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -121,13 +148,19 @@ h5, h6 {
 #body {
     background-color: #efeeef;
     clear: both;
+    margin-top: 65px;
     padding-bottom: 35px;
+    position: relative;
+
+    height: 100%;
 }
 
+#cph{
+    margin-left: 175px;
+
+}
     .main-content {
         background: url("../Images/accent.png") no-repeat;
-        padding-left: 10px;
-        padding-top: 30px;
     }
 
     .featured + .main-content {
@@ -142,6 +175,8 @@ footer {
     clear: both;
     background-color: #e2e2e2;
     font-size: .8em;
+    position: relative;
+    bottom: 0;
     height: 100px;
 }
 
@@ -233,14 +268,18 @@ ul#menu {
 }
 
     .featured .content-wrapper {
-        background-color: #7ac0da;
-        background-image: -ms-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: -o-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #7ac0da), color-stop(1, #a4d4e6));
-        background-image: -webkit-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        color: #3e5667;
-        padding: 20px 40px 30px 40px;
+        background: #7ac0da; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMTAwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICA8c3RvcCBvZmZzZXQ9Ijg1JSIgc3RvcC1jb2xvcj0iIzdhYzBkYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhNGQ0ZTYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(45deg,  #7ac0da 85%, #a4d4e6 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(85%,#7ac0da), color-stop(100%,#a4d4e6)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(45deg,  #7ac0da 85%,#a4d4e6 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(45deg,  #7ac0da 85%,#a4d4e6 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(45deg,  #7ac0da 85%,#a4d4e6 100%); /* IE10+ */
+background: linear-gradient(45deg,  #7ac0da 85%,#a4d4e6 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ac0da', endColorstr='#a4d4e6',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+
+        padding: 20px 0 30px 0;
     }
 
         .featured hgroup.title h1, .featured hgroup.title h2 {
@@ -254,6 +293,7 @@ ul#menu {
 /* page titles */
 hgroup.title {
     margin-bottom: 10px;
+    margin-left: 20px;
 }
 
 hgroup.title h1, hgroup.title h2 {
@@ -325,24 +365,53 @@ ol.round {
 
 /* content */
 article {
-    float: left;
-    width: 70%;
+    float: right;
+    width: 780px;
 }
 
 aside {
-    float: right;
-    width: 25%;
+    /*float: left;*/
+    display: inline-table;
+    position: relative;
+    height: 100%;
+    width: 160px;
+    padding: 0;
+    background-color: #7ac0da;
+        background-image: -ms-linear-gradient(left, #7ac0da 0%, #7ac0cc 100%);
+        background-image: -o-linear-gradient(left, #7ac0da 0%, #7ac0cc 100%);
+        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #7ac0da), color-stop(1, #7ac0cc));
+        background-image: -webkit-linear-gradient(left, #7ac0da 0%, #7ac0cc 100%);
+        background-image: linear-gradient(left, #7ac0da 0%, #7ac0cc 100%);
+        color: #3e5667;
 }
 
+    aside .title{
+        color: #e2e2e2;
+        text-indent: 15px;
+    }
     aside ul {
         list-style: none;
         padding: 0;
+        list-style-position: hanging;
     }
 
         aside ul li {
-            background: url("../Images/bullet.png") no-repeat 0 50%;
-            padding: 2px 0 2px 20px;
+            padding: 0;
+            
         }
+            aside ul li a {
+                text-decoration: none;
+                color: #e2e2e2 !important;
+                font-size: 18px;
+                width: 100%;
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+                text-indent: 20px;
+            }
+            aside ul li a:hover{
+                color: #333 !important;
+            }
 
 .label {
     font-weight: 700;

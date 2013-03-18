@@ -15,35 +15,189 @@
         </div>
     </section>
 }
-<article>
-    <div>
-        <h3>where i'm at now...</h3>
-        <p>
-            Since Thanksgiving of 2011, I have been employed at eComSystems, Inc. in Sarasota, FL. Working as part of a
-            collaborative team, we are tasked with developing enterprise level web applications uniquely designed to meet
-            the custom marketing needs of our 
-        </p>
-    </div>
-
-    <div>
-    </div>
-
-</article>
-
-<aside>
-    <h3>Aside Title</h3>
-    <p>
-        Use this area to provide additional information.
-    </p>
-    <ul>
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-    </ul>
-</aside>
+<canvas id="canvas" width="600" height="600"></canvas>
 
 @section scripts{
     <script type="text/javascript">
+        window.requestAnimFrame = (function (callback) {
+            return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000 / 90);
+            };
+        })();
+
+        function drawBall(ball, context) {
+            context.save();
+            context.beginPath();
+            context.arc(ball.x, ball.y, ball.width / 2, 0, 2 * Math.PI, false);
+            context.fillStyle = "red";
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = "black";
+            context.stroke();
+            context.restore();
+        }
+        function drawGun(gun, context) {
+            context.save();
+            context.lineWidth = 30;
+            context.strokeStyle = "black";
+            context.beginPath();
+            context.moveTo(gun.baseX, gun.baseY);
+            context.lineTo(gun.x, gun.y);
+            context.stroke();
+            context.restore();
+        }
+
+        function drawBirds(birds, context) {
+            for (var i = 0; i < birds.length; i++) {
+                var b = birds[i];
+                context.save();
+                context.beginPath();
+                context.rect(b.x, b.y, b.width, b.height);
+                context.fillStyle = b.fill;
+                context.fill();
+                context.lineWidth = 5;
+                context.strokeStyle = "black";
+                context.stroke();
+                context.restore();
+            }
+        }
+
+        function animate(ball, gun, canvas, context, x, y) {
+            if (x < canvas.width - ball.width - ball.borderWidth / 2) {
+                if (y < canvas.height - ball.width - ball.borderWidth / 2) {
+                    ball.x = x;
+                    ball.y = y;
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    drawBirds(birds, context);
+
+                    drawBall(ball, context);
+                    drawGun(gun, context);
+                    requestAnimFrame(function () {
+                        animate(ball, gun, canvas, context, x, y);
+                    });
+                }
+            }
+        }
+
+        function getMousePos(canvas, evt) {
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: evt.clientX - rect.left,
+                y: evt.clientY - rect.top
+            };
+        }
+        function getGunAngle(gun, x, y, evt){
+            var triangleX = x - gun.baseX;
+            var triangleY = y - gun.baseY;
+            gun.angle = Math.atan2(triangleY, triangleX);
+
+            return {
+                x: gun.baseX + 90 * Math.cos(gun.angle),
+                y: gun.baseY + 90 * Math.sin(gun.angle)
+            };
+        }
+
+        function willHitBird(x, y, birds) {
+            var willHit = false;
+            var birdID;
+            for (var i = 0; i < birds.length; i++) {
+                var b = birds[i];
+                
+                //if((ball.x - 15 > tlX && ball.y - 15 > tlX) && (ball.x - 15 < blX && ball.y + 15 < blY) && (ball.x + 15 < trX && ball.y - 15 > trY) && (ball.x + 15 <
+                willHit = ((x + 7 > b.x) && (x - 7 < b.x + b.width)) && ((y + 7 > b.y) && (y - 7 < b.y + b.height));
+                if (willHit) {
+                    birdID = i;
+                    break;
+                }
+            }
+            return {
+                hit: willHit,
+                id: birdID
+            }
+        }
+
+        var bird = {
+            x: 100,
+            y: 100,
+            width: 40,
+            height: 50,
+            fill: "grey"
+        }, bird2 = {
+            x: 200,
+            y: 100,
+            width: 40,
+            height: 50,
+            fill: "grey"
+        }, bird3 = {
+            x: 300,
+            y: 100,
+            width: 40,
+            height: 50,
+            fill: "grey"
+        }, bird4 = {
+            x: 400,
+            y: 100,
+            width: 40,
+            height: 50,
+            fill: "grey"
+        };
+
+        var birds = [bird, bird2, bird3, bird4];
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+        var centerX = canvas.width / 2;
+        var centerY = canvas.height / 2;
+        window.cContext = context;
+        var ball = {
+            x: centerX,
+            y: centerY,
+            width: 15,
+            borderWidth: 5
+        };        
+        var gun = {
+            x: centerX,
+            y: centerY,
+            baseX: centerX,
+            baseY: centerY + 90,
+            width: 30,
+            height: 90,
+            borderWidth: 5,
+            angle: 90,
+            ammo: 5
+        };
+        drawBirds(birds, context);
+
+        drawBall(ball, context);
+        drawGun(gun, context);
+
+        $(canvas).mousemove(function (evt) {
+            var coord = getMousePos(canvas, evt);
+            var x = canvas.height - coord.x;
+            var y = canvas.width - coord.y;
+            var gunCoords = getGunAngle(gun, x, y, evt);
+            gun.x = gunCoords.x;
+            gun.y = gunCoords.y;
+            
+            animate(ball, gun, canvas, context, x, y);
+        }).click(function(evt){
+            if (gun.ammo > 0) {
+                gun.ammo -= 1;
+                var coord = getMousePos(canvas, evt);
+                var x = canvas.height - coord.x;
+                var y = canvas.width - coord.y;
+                var checkAim = willHitBird(x, y, birds);
+                if (checkAim.hit) {
+                    birds[checkAim.id].fill = "yellow";
+                    
+                    animate(ball, gun, canvas, context, x, y);
+                }
+
+            } else {
+                alert("sorry, no more ammo");
+            }
+        });
         
+
     </script>
 }
