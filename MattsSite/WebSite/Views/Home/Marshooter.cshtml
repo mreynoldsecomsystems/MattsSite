@@ -246,7 +246,7 @@
             //canvas.removeEventListener("mousemove");
 
             canvas.addEventListener("touchmove", function (evt) {
-                
+                document.removeEventListener("touchmove");
                 if(evt.targetTouches.length == 1){
                     var coord = evt.targetTouches[0];
                     var rect = canvas.getBoundingClientRect();
