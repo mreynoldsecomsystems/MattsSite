@@ -16,13 +16,15 @@
     </section>
 }
 <canvas id="canvas" width="600" height="600"></canvas>
-
+<div style="text-align: center;">
+    <input type="button" value="reset game" id="reset" />
+</div>
 @section scripts{
     <script type="text/javascript">
         window.requestAnimFrame = (function (callback) {
             return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
             function (callback) {
-                window.setTimeout(callback, 1000 / 90);
+                window.setTimeout(callback, 5000 / 60);
             };
         })();
 
@@ -148,7 +150,7 @@
         var context = canvas.getContext("2d");
         var centerX = canvas.width / 2;
         var centerY = canvas.height / 2;
-        window.cContext = context;
+
         var ball = {
             x: centerX,
             y: centerY,
@@ -166,8 +168,8 @@
             angle: 90,
             ammo: 5
         };
-        drawBirds(birds, context);
 
+        drawBirds(birds, context);
         drawBall(ball, context);
         drawGun(gun, context);
 
@@ -197,7 +199,53 @@
                 alert("sorry, no more ammo");
             }
         });
-        
+        $("#reset").click(function () {
+            birds = [bird = {
+                x: 100,
+                y: 100,
+                width: 40,
+                height: 50,
+                fill: "grey"
+            }, bird2 = {
+                x: 200,
+                y: 100,
+                width: 40,
+                height: 50,
+                fill: "grey"
+            }, bird3 = {
+                x: 300,
+                y: 100,
+                width: 40,
+                height: 50,
+                fill: "grey"
+            }, bird4 = {
+                x: 400,
+                y: 100,
+                width: 40,
+                height: 50,
+                fill: "grey"
+            }];
+            ball = {
+                x: centerX,
+                y: centerY,
+                width: 15,
+                borderWidth: 5
+            };
+            gun = {
+                x: centerX,
+                y: centerY,
+                baseX: centerX,
+                baseY: centerY + 90,
+                width: 30,
+                height: 90,
+                borderWidth: 5,
+                angle: 90,
+                ammo: 5
+            };
+            drawBirds(birds, context);
+            drawBall(ball, context);
+            drawGun(gun, context);
+        });
 
     </script>
 }
