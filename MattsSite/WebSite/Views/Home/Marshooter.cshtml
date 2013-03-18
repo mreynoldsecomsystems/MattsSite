@@ -241,10 +241,10 @@
         });
 
         if (isTouchDevice()) {
-            document.ontouchstart = function (e) {
-                e.preventDefault();
-            }
-            canvas.removeEventListener("mousemove");
+            //document.ontouchstart = function (e) {
+            //    e.preventDefault();
+            //}
+            //canvas.removeEventListener("mousemove");
             canvas.addEventListener("touchmove", function (evt) {
                 var coord = getMousePos(canvas, evt);
                 var x = canvas.height - coord.x;
