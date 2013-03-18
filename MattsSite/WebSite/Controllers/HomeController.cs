@@ -32,5 +32,10 @@ namespace WebSite.Controllers
 
             return View();
         }
+
+        public ActionResult Marshooter()
+        {
+            return View();
+        }
     }
 }

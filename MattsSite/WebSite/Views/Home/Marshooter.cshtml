@@ -1,30 +1,29 @@
 ﻿@{
-    ViewBag.Title = "about";
-    bool isMatt = User.Identity.IsAuthenticated && User.Identity.Name == "mattR";
+    Layout = null;
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-            <p>
-                
-            </p>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Marshooter</title>
+</head>
+<body style="max-width: 960px;">
+    <div style="margin: 0 auto;">
+        <canvas id="canvas" width="600" height="600" style="border: 1px solid #ddd"></canvas>
+        <div>
+            <input type="button" value="reset game" id="reset" />
+            <input type="button" value="shoot" id="shoot" />
         </div>
-    </section>
-}
-<canvas id="canvas" width="600" height="600"></canvas>
-<div style="text-align: center;">
-    <input type="button" value="reset game" id="reset" />
-</div>
-@section scripts{
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+
     <script type="text/javascript">
         window.requestAnimFrame = (function (callback) {
             return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
             function (callback) {
-                window.setTimeout(callback, 5000 / 60);
+                window.setTimeout(callback, 500 / 60);
             };
         })();
 
@@ -39,6 +38,7 @@
             context.stroke();
             context.restore();
         }
+
         function drawGun(gun, context) {
             context.save();
             context.lineWidth = 30;
@@ -65,16 +65,61 @@
             }
         }
 
+        function drawFence(context) {
+            context.save();
+            context.beginPath();
+            context.fillStyle = "white";
+            context.rect(0, 140, context.canvas.width, 10);
+            context.rect(0, 160, context.canvas.width, 10);
+            context.rect(0, 180, context.canvas.width, 10);
+            context.rect(40, 135, 10, 80);
+            context.rect(120, 135, 10, 80);
+            context.rect(200, 135, 10, 80);
+            context.rect(280, 135, 10, 80);
+            context.rect(360, 135, 10, 80);
+            context.rect(440, 135, 10, 80);
+
+            context.fill();
+            context.lineWidth = 2;
+            context.strokeStyle = "black";
+            context.stroke();
+            context.restore();
+        }
+
+        function drawAmmo(gun, context) {
+            context.save();
+            context.beginPath();
+            context.fillStyle = "brown";
+            for (var i = 0; i < gun.ammo; i++) {
+                var bx = 14 * (i + 1);
+                var by = 550;
+                var w = 8;
+                var h = 15;
+
+                context.moveTo(bx, by);
+                context.lineTo(bx, by - h);
+                context.arcTo(bx + 4, by- h - 4, bx + w, by - h, 6);
+                context.lineTo(bx + 8, by);
+                context.closePath();
+            }
+
+            context.fill();
+            context.lineWidth = 2;
+            context.strokeStyle = "black";
+            context.stroke();
+        }
+
         function animate(ball, gun, canvas, context, x, y) {
             if (x < canvas.width - ball.width - ball.borderWidth / 2) {
                 if (y < canvas.height - ball.width - ball.borderWidth / 2) {
                     ball.x = x;
                     ball.y = y;
                     context.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFence(context);
                     drawBirds(birds, context);
-
                     drawBall(ball, context);
                     drawGun(gun, context);
+                    drawAmmo(gun, context);
                     requestAnimFrame(function () {
                         animate(ball, gun, canvas, context, x, y);
                     });
@@ -106,7 +151,7 @@
             var birdID;
             for (var i = 0; i < birds.length; i++) {
                 var b = birds[i];
-                
+
                 //if((ball.x - 15 > tlX && ball.y - 15 > tlX) && (ball.x - 15 < blX && ball.y + 15 < blY) && (ball.x + 15 < trX && ball.y - 15 > trY) && (ball.x + 15 <
                 willHit = ((x + 7 > b.x) && (x - 7 < b.x + b.width)) && ((y + 7 > b.y) && (y - 7 < b.y + b.height));
                 if (willHit) {
@@ -120,29 +165,35 @@
             }
         }
 
+        function isTouchDevice() {
+            var el = document.createElement('div');
+            el.setAttribute('ongesturestart', 'return;');
+            return typeof el.ongesturestart === "function";
+        }
+
         var bird = {
             x: 100,
             y: 100,
-            width: 30,
-            height: 50,
+            width: 20,
+            height: 40,
             fill: "grey"
         }, bird2 = {
             x: 200,
             y: 100,
-            width: 30,
-            height: 50,
+            width: 20,
+            height: 40,
             fill: "grey"
         }, bird3 = {
             x: 300,
             y: 100,
-            width: 30,
-            height: 50,
+            width: 20,
+            height: 40,
             fill: "grey"
         }, bird4 = {
             x: 400,
             y: 100,
-            width: 30,
-            height: 50,
+            width: 20,
+            height: 40,
             fill: "grey"
         };
 
@@ -157,7 +208,8 @@
             y: centerY,
             width: 15,
             borderWidth: 2
-        };        
+        };
+
         var gun = {
             x: centerX,
             y: centerY,
@@ -170,9 +222,12 @@
             ammo: 5
         };
 
+        drawFence(context);
         drawBirds(birds, context);
         drawBall(ball, context);
         drawGun(gun, context);
+        drawAmmo(gun, context);
+
 
         $(canvas).mousemove(function (evt) {
             var coord = getMousePos(canvas, evt);
@@ -181,56 +236,81 @@
             var gunCoords = getGunAngle(gun, x, y, evt);
             gun.x = gunCoords.x;
             gun.y = gunCoords.y;
-            
-            animate(ball, gun, canvas, context, x, y);
-        }).click(function(evt){
-            if (gun.ammo > 0) {
-                gun.ammo -= 1;
-                var coord = getMousePos(canvas, evt);
-                var x = canvas.height - coord.x;
-                var y = canvas.width - coord.y;
-                var checkAim = willHitBird(x, y, birds);
-                if (checkAim.hit) {
-                    birds[checkAim.id].fill = "yellow";
-                    
-                    animate(ball, gun, canvas, context, x, y);
-                }
 
-            } else {
-                alert("sorry, no more ammo");
-            }
+            animate(ball, gun, canvas, context, x, y);
         });
+
+        if (isTouchDevice()) {
+            $("#shoot").click(function (evt) {
+                if (gun.ammo > 0) {
+                    gun.ammo -= 1;
+                    var coord = getMousePos(canvas, evt);
+                    var x = canvas.height - coord.x;
+                    var y = canvas.width - coord.y;
+                    var checkAim = willHitBird(x, y, birds);
+                    if (checkAim.hit) {
+                        birds[checkAim.id].fill = "yellow";
+
+                        animate(ball, gun, canvas, context, x, y);
+                    }
+
+                } else {
+                    alert("sorry, no more ammo");
+                }
+            });
+        } else {
+            $("#shoot").hide();
+            $("#canvas").click(function (evt) {
+                if (gun.ammo > 0) {
+                    gun.ammo -= 1;
+                    var coord = getMousePos(canvas, evt);
+                    var x = canvas.height - coord.x;
+                    var y = canvas.width - coord.y;
+                    var checkAim = willHitBird(x, y, birds);
+                    if (checkAim.hit) {
+                        birds[checkAim.id].fill = "yellow";
+
+                        animate(ball, gun, canvas, context, x, y);
+                    }
+
+                } else {
+                    alert("sorry, no more ammo");
+                }
+            });
+        }
+
+
         $("#reset").click(function () {
             birds = [bird = {
                 x: 100,
                 y: 100,
-                width: 40,
-                height: 50,
+                width: 20,
+                height: 40,
                 fill: "grey"
             }, bird2 = {
                 x: 200,
                 y: 100,
-                width: 40,
-                height: 50,
+                width: 20,
+                height: 40,
                 fill: "grey"
             }, bird3 = {
                 x: 300,
                 y: 100,
-                width: 40,
-                height: 50,
+                width: 20,
+                height: 40,
                 fill: "grey"
             }, bird4 = {
                 x: 400,
                 y: 100,
-                width: 40,
-                height: 50,
+                width: 20,
+                height: 40,
                 fill: "grey"
             }];
             ball = {
                 x: centerX,
                 y: centerY,
                 width: 15,
-                borderWidth: 5
+                borderWidth: 2
             };
             gun = {
                 x: centerX,
@@ -239,14 +319,16 @@
                 baseY: centerY + 90,
                 width: 30,
                 height: 90,
-                borderWidth: 5,
+                borderWidth: 2,
                 angle: 90,
                 ammo: 5
             };
             drawBirds(birds, context);
             drawBall(ball, context);
             drawGun(gun, context);
+            drawAmmo(gun, context);
         });
 
     </script>
-}
+</body>
+</html>
