@@ -241,7 +241,20 @@
         });
 
         if (isTouchDevice()) {
-           
+            document.ontouchstart = function (e) {
+                e.preventDefault();
+            }
+            canvas.removeEventListener("mousemove");
+            canvas.addEventListener("touchmove", function (e) {
+                var coord = getMousePos(canvas, evt);
+                var x = canvas.height - coord.x;
+                var y = canvas.width - coord.y;
+                var gunCoords = getGunAngle(gun, x, y, evt);
+                gun.x = gunCoords.x;
+                gun.y = gunCoords.y;
+
+                animate(ball, gun, canvas, context, x, y);
+            });
 
             $("#shoot").click(function (evt) {
                 if (gun.ammo > 0) {
