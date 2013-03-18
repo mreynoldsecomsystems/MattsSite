@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scaleable=no" />
     <title>Marshooter</title>
 </head>
 <body style="max-width: 960px;">
@@ -245,7 +245,7 @@
                 e.preventDefault();
             }
             canvas.removeEventListener("mousemove");
-            canvas.addEventListener("touchmove", function (e) {
+            canvas.addEventListener("touchmove", function (evt) {
                 var coord = getMousePos(canvas, evt);
                 var x = canvas.height - coord.x;
                 var y = canvas.width - coord.y;
