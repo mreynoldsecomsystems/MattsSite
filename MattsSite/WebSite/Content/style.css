@@ -149,13 +149,15 @@ h5, h6 {
 
 a {
     text-decoration: none !important;
+        color: #164871 ;
+
 }
 
     a:hover {
     }
 
     a:visited {
-        color: #333;
+        color: #345774;
     }
 
 ol.round {
