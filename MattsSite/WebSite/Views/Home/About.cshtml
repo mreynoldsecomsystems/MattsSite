@@ -3,8 +3,7 @@
     bool isMatt = User.Identity.IsAuthenticated && User.Identity.Name == "mattR";
 }
 @section featured {
-    <section class="featured">
-        <div class="content-wrapper">
+        <div>
             <hgroup class="title">
                 <h1>@ViewBag.Title.</h1>
                 <h2>@ViewBag.Message</h2>
@@ -13,7 +12,6 @@
                 
             </p>
         </div>
-    </section>
 }
 <canvas id="canvas" width="600" height="600"></canvas>
 <div style="text-align: center;">

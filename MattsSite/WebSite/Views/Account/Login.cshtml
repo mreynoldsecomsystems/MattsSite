@@ -3,36 +3,41 @@
 @{
     ViewBag.Title = "Log in";
 }
-
-<hgroup class="title">
+    <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
 </hgroup>
 
+<div id="loginFormContainer">
+
 <section id="loginForm">
-<h2>Use a local account to log in.</h2>
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
+    <h2>Use a local account to log in.</h2>
 
-    <fieldset>
+    <fieldset style="width: 375px;">
+
         <legend>Log in Form</legend>
-        <ol>
-            <li>
+        <ul style="list-style: none; padding: 15px 5px;">
+            <li style="display: inline-block;width: 100%;">
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName)
                 @Html.ValidationMessageFor(m => m.UserName)
             </li>
-            <li>
+            <li style="display: inline-block;width: 100%;">
                 @Html.LabelFor(m => m.Password)
                 @Html.PasswordFor(m => m.Password)
                 @Html.ValidationMessageFor(m => m.Password)
             </li>
-            <li>
+            <li style="width: 100%;">
                 @Html.CheckBoxFor(m => m.RememberMe)
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
             </li>
-        </ol>
+        </ul>
+        <div class="buttons">
         <input type="submit" value="Log in" />
+            </div>
     </fieldset>
     <p>
         @Html.ActionLink("Register", "Register") if you don't have an account.
@@ -41,10 +46,9 @@
 </section>
 
 <section class="social" id="socialLoginForm">
-    <h2>Use another service to log in.</h2>
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
-
+    </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

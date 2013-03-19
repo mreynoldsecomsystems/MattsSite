@@ -8,17 +8,20 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=.5, user-scalable=yes" />
     <title>Marshooter</title>
+    @Styles.Render("~/Content/css")
+
 </head>
-<body style="max-width: 960px;">
-    <div style="margin: 0 auto;">
-        <canvas id="canvas" width="600" height="600" style="border: 1px solid #ddd"></canvas>
-        <div>
-            <input type="button" value="reset game" id="reset" />
-            <input type="button" value="shoot" id="shoot" />
+<body>
+    <div id="main">
+        <div style="margin: 0 auto;">
+            <canvas id="canvas" width="600" height="600" style="border: 1px solid #ddd"></canvas>
+            <div>
+                <input type="button" value="reset game" id="reset" />
+                <input type="button" value="shoot" id="shoot" />
+            </div>
         </div>
     </div>
     @Scripts.Render("~/bundles/jquery")
-
     <script type="text/javascript">
         window.requestAnimFrame = (function (callback) {
             return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
@@ -98,7 +101,7 @@
 
                 context.moveTo(bx, by);
                 context.lineTo(bx, by - h);
-                context.arcTo(bx + 4, by- h - 4, bx + w, by - h, 6);
+                context.arcTo(bx + 4, by - h - 4, bx + w, by - h, 6);
                 context.lineTo(bx + 8, by);
                 context.closePath();
             }
@@ -247,7 +250,7 @@
 
             canvas.addEventListener("touchmove", function (evt) {
                 document.removeEventListener("touchmove");
-                if(evt.targetTouches.length == 1){
+                if (evt.targetTouches.length == 1) {
                     var coord = evt.targetTouches[0];
                     var rect = canvas.getBoundingClientRect();
                     var x = canvas.height - (coord.pageX - rect.left);
