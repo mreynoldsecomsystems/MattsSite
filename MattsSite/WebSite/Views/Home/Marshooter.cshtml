@@ -15,7 +15,8 @@
     <div id="main" style="max-height: 100%">
         <div style="margin: 0 auto;">
             <canvas id="canvas" width="600" height="600" style="border: 1px solid #ddd"></canvas>
-            <div>
+            <div class="buttons">
+                <input type="button" value="home" id="home" />
                 <input type="button" value="reset game" id="reset" />
                 <input type="button" value="shoot" id="shoot" />
             </div>
@@ -347,7 +348,10 @@
             drawGun(gun, context);
             drawAmmo(gun, context);
         });
-
+        $("#home").click(function () {
+            var host = "http://" + window.location.host;
+            window.location = host + "/Home/";
+        });
     </script>
 </body>
 </html>
