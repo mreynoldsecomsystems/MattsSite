@@ -8,9 +8,7 @@
                 <h2>@ViewBag.Message</h2>
             </hgroup>
         </div>
-    <div>
-        <a href="~/Home/Marshooter/"><h1>eli's sweet taters</h1><h2></h2></a>
-    </div>
+
 }
 <h3></h3>
 <ol class="round">
@@ -32,7 +30,14 @@
         @Html.ActionLink("read more", "Hobbies", "Home")
     </li>
 </ol>
-
+@section aside{
+    <div>tags will go here...</div>
+    <div>.NET 4.5</div>
+    <div><strong>ASP.NET 4.0</strong></div>
+    <div><strong>MVC4</strong></div>
+    <div>it might get a little crowded...</div>
+    <div>css</div>
+}
 
 @section scripts
 {

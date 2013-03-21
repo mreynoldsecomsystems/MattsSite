@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <title></title>
     <meta charset="utf-8" />
     @*<title>@ViewBag.Title - Matt's Virtual Portfolio</title>*@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -8,19 +9,19 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/themes/base/css")
     @RenderSection("header", required: false)
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         WebFontConfig = {
             google: { families: ['Economica:400,700,400italic,700italic:latin', 'Quintessential::latin', 'Anaheim::latin', 'Bad+Script::latin', 'Arimo:400,700,400italic,700italic:latin', 'Frijole::latin', 'Source+Code+Pro:200,400,700:latin', 'Gloria+Hallelujah::latin', 'Calligraffitti::latin', 'Clicker+Script::latin', 'Fjalla+One::latin', 'Geo:400,400italic:latin', 'Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700:latin', 'Roboto+Condensed:300italic,400italic,700italic,400,300,700:latin', 'Cuprum:400,400italic,700,700italic:latin', 'Ewert::latin', 'Marvel:400,400italic,700,700italic:latin', 'Maven+Pro:400,500,700,900:latin', 'Nothing+You+Could+Do::latin', 'Dawning+of+a+New+Day::latin', 'Advent+Pro:400,300,700:latin'] }
         };
         (function () {
             var wf = document.createElement('script');
-            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
               '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
             wf.type = 'text/javascript';
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
             wf.async = 'true';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(wf, s);
-        })(); </script>
+        })(); </script>*@
 </head>
 <body>
     <header>
@@ -31,20 +32,22 @@
 
         </div>
     </header>
-<nav>
-    @Html.ActionLink("home", "Index", "Home")
-    @Html.ActionLink("about", "About", "Home")
-    @Html.ActionLink("contact", "Contact", "Home")
-    @Html.ActionLink("blog", "Index", "Blog")
-    @Html.Partial("_LoginPartial")
-</nav>
+    <nav>
+        
+    </nav>
     <div id="main">
         <section>
-                @RenderSection("featured", required: false)            
-        </section>
+            @Html.ActionLink("home", "Index", "Home")
+            @Html.ActionLink("about", "About", "Home")
+            @Html.ActionLink("contact", "Contact", "Home")
+        <a href="~/Home/Marshooter/">eli's sweet taters</a>
 
+            @Html.ActionLink("blog", "Index", "Blog")
+            @Html.Partial("_LoginPartial")
+        </section>
         <article>
             <div class="content-wrapper clear-fix">
+                @RenderSection("featured", required: false)
                 @RenderBody()
             </div>
         </article>
@@ -54,7 +57,7 @@
     </div>
     <footer>
         <div class="content-wrapper">
-                &copy; @DateTime.Now.Year - Matt Reynolds
+            &copy; @DateTime.Now.Year - Matt Reynolds
         </div>
     </footer>
 

@@ -23,7 +23,7 @@ namespace WebSite
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/style.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/StyleSheet.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery-ui.css",
