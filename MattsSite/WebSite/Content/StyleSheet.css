@@ -524,7 +524,7 @@ a {
 
 @media all and (max-width: 650px){
     body{
-        font-size: 50%
+        font-size: 40%
     }
     #main {
         -webkit-box-direction: normal;
