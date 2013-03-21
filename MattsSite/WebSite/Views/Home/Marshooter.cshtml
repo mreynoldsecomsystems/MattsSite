@@ -243,99 +243,7 @@
 
             animate(ball, gun, canvas, context, x, y);
         });
-        if (isTouchDevice()) {
-            document.ontouchstart = function (e) {
-                e.preventDefault();
-            }
-            //canvas.removeEventListener("mousemove");
-
-            canvas.addEventListener("touchstart", function (e) {
-                canvas.addEventListener("touchmove", function (evt) {
-                    if (evt.targetTouches.length == 1) {
-                        var coord = evt.targetTouches[0];
-                        var rect = canvas.getBoundingClientRect();
-                        var x = canvas.height - (coord.pageX - rect.left);
-                        var y = canvas.width - coord.pageY - rect.top;
-                        var gunCoords = getGunAngle(gun, x, y, evt);
-                        gun.x = gunCoords.x;
-                        gun.y = gunCoords.y;
-
-                        animate(ball, gun, canvas, context, x, y);
-                    }
-                });
-                $(canvas).one("touchleave", function (e) {
-                    canvas.removeEventListener("touchmove");
-                });
-
-            });
-            var shoot = document.getElementById("shoot");
-            shoot.addEventListener("click", function (e) {
-                if (gun.ammo > 0) {
-                    gun.ammo -= 1;
-                    var checkAim = willHitBird(ball.x, ball.y, birds);
-                    if (checkAim.hit) {
-                        birds[checkAim.id].fill = "yellow";
-
-                        animate(ball, gun, canvas, context, x, y);
-                    }
-
-                } else {
-                    alert("sorry, no more ammo");
-                }
-            });
-            shoot.addEventListener("touchstart", function (e) {
-                if (gun.ammo > 0) {
-                    gun.ammo -= 1;
-                    var checkAim = willHitBird(ball.x, ball.y, birds);
-                    if (checkAim.hit) {
-                        birds[checkAim.id].fill = "yellow";
-
-                        animate(ball, gun, canvas, context, x, y);
-                    }
-
-                } else {
-                    alert("sorry, no more ammo");
-                }
-            });
-
-
-            $("#shoot").click(function (evt) {
-                if (gun.ammo > 0) {
-                    gun.ammo -= 1;
-                    var checkAim = willHitBird(ball.x, ball.y, birds);
-                    if (checkAim.hit) {
-                        birds[checkAim.id].fill = "yellow";
-
-                        animate(ball, gun, canvas, context, x, y);
-                    }
-
-                } else {
-                    alert("sorry, no more ammo");
-                }
-            });
-        } else {
-            $("#shoot").hide();
-            $("#canvas").click(function (evt) {
-                if (gun.ammo > 0) {
-                    gun.ammo -= 1;
-                    var coord = getMousePos(canvas, evt);
-                    var x = canvas.height - coord.x;
-                    var y = canvas.width - coord.y;
-                    var checkAim = willHitBird(x, y, birds);
-                    if (checkAim.hit) {
-                        birds[checkAim.id].fill = "yellow";
-
-                        animate(ball, gun, canvas, context, x, y);
-                    }
-
-                } else {
-                    alert("sorry, no more ammo");
-                }
-            });
-        }
-
-
-        $("#reset").click(function () {
+        var handleReset = function () {
             birds = [bird = {
                 x: 100,
                 y: 100,
@@ -382,11 +290,81 @@
             drawBall(ball, context);
             drawGun(gun, context);
             drawAmmo(gun, context);
-        });
-        $("#home").click(function () {
+        };
+        var handleHome = function () {
             var host = "http://" + window.location.host;
             window.location = host + "/Home/";
-        });
+        };
+
+        if (isTouchDevice()) {
+            document.ontouchstart = function (e) {
+                e.preventDefault();
+            }
+            //canvas.removeEventListener("mousemove");
+
+            canvas.addEventListener("touchstart", function (e) {
+                canvas.addEventListener("touchmove", function (evt) {
+                    if (evt.targetTouches.length == 1) {
+                        var coord = evt.targetTouches[0];
+                        var rect = canvas.getBoundingClientRect();
+                        var x = canvas.height - (coord.pageX - rect.left);
+                        var y = canvas.width - coord.pageY - rect.top;
+                        var gunCoords = getGunAngle(gun, x, y, evt);
+                        gun.x = gunCoords.x;
+                        gun.y = gunCoords.y;
+
+                        animate(ball, gun, canvas, context, x, y);
+                    }
+                });
+                $(canvas).one("touchleave", function (e) {
+                    canvas.removeEventListener("touchmove");
+                });
+
+            });
+            var home = document.getElementById("home");
+            var reset = document.getElementById("reset");
+            var shoot = document.getElementById("shoot");
+            
+            shoot.addEventListener("touchstart", function (e) {
+                if (gun.ammo > 0) {
+                    gun.ammo -= 1;
+                    var checkAim = willHitBird(ball.x, ball.y, birds);
+                    if (checkAim.hit) {
+                        birds[checkAim.id].fill = "yellow";
+
+                        animate(ball, gun, canvas, context, x, y);
+                    }
+
+                } else {
+                    alert("sorry, no more ammo");
+                }
+            });
+            home.addEventListener("touchstart", handleHome);
+            reset.addEventListener("touchstart", handleReset);
+        } else {
+            $("#shoot").hide();
+            $("#canvas").click(function (evt) {
+                if (gun.ammo > 0) {
+                    gun.ammo -= 1;
+                    var coord = getMousePos(canvas, evt);
+                    var x = canvas.height - coord.x;
+                    var y = canvas.width - coord.y;
+                    var checkAim = willHitBird(x, y, birds);
+                    if (checkAim.hit) {
+                        birds[checkAim.id].fill = "yellow";
+
+                        animate(ball, gun, canvas, context, x, y);
+                    }
+
+                } else {
+                    alert("sorry, no more ammo");
+                }
+            });
+        }
+
+        
+        $("#reset").click(handleReset);
+        $("#home").click(handleHome);
     </script>
 </body>
 </html>
