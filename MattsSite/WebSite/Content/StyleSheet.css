@@ -486,7 +486,7 @@ a {
 
 @media all and (max-width: 1275px){
     body{
-        font-size: 65%;
+        font-size: 75%;
     }
     #loginFormContainer{
         -webkit-box-direction: normal;
@@ -523,6 +523,9 @@ a {
 }
 
 @media all and (max-width: 650px){
+    body{
+        font-size: 65%
+    }
     #main {
         -webkit-box-direction: normal;
         -moz-box-direction: normal;
