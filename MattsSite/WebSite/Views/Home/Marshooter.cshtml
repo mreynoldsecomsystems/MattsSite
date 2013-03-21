@@ -310,7 +310,7 @@
             }
         };
         var handleCanvas = function (evt) {
-            if (evt.targetTouches.length == 1) {
+            //if (evt.targetTouches.length == 1) {
                 var coord = evt.targetTouches[0];
                 var rect = canvas.getBoundingClientRect();
                 var x = canvas.height - (coord.pageX - rect.left);
@@ -320,7 +320,7 @@
                 gun.y = gunCoords.y;
 
                 animate(ball, gun, canvas, context, x, y);
-            }
+            //}
         };
 
         if (isTouchDevice()) {
