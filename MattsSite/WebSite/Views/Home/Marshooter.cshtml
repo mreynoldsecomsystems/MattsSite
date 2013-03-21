@@ -295,6 +295,20 @@
             var host = "http://" + window.location.host;
             window.location = host + "/Home/";
         };
+        var handleShoot = function (e) {
+            if (gun.ammo > 0) {
+                gun.ammo -= 1;
+                var checkAim = willHitBird(ball.x, ball.y, birds);
+                if (checkAim.hit) {
+                    birds[checkAim.id].fill = "yellow";
+
+                    animate(ball, gun, canvas, context, x, y);
+                }
+
+            } else {
+                alert("sorry, no more ammo");
+            }
+        };
         var handleCanvas = function (evt) {
             if (evt.targetTouches.length == 1) {
                 var coord = evt.targetTouches[0];
@@ -315,32 +329,26 @@
             }
             //canvas.removeEventListener("mousemove");
 
-            canvas.addEventListener("touchstart", handleCanvas);
-            canvas.addEventListener("touchmove", handleCanvas);
-                
+            canvas.addEventListener("touchstart", function (e) {
+                setInterval(handleCanvas, 0, e);
+            });
+            canvas.addEventListener("touchmove", function (e) {
+                setInterval(handleCanvas, 0, e);
+            });
 
             var home = document.getElementById("home");
             var reset = document.getElementById("reset");
             var shoot = document.getElementById("shoot");
             
             shoot.addEventListener("touchstart", function (e) {
-                if (gun.ammo > 0) {
-                    gun.ammo -= 1;
-                    var checkAim = willHitBird(ball.x, ball.y, birds);
-                    if (checkAim.hit) {
-                        birds[checkAim.id].fill = "yellow";
-
-                        animate(ball, gun, canvas, context, x, y);
-                    }
-
-                } else {
-                    alert("sorry, no more ammo");
-                }
+                setInterval(handleShoot, 0, e);
             });
             home.addEventListener("touchstart", function (e) {
-                setInterval(handleHome, 0, e)
+                setInterval(handleHome, 0, e);
             });
-            reset.addEventListener("touchstart", handleReset);
+            reset.addEventListener("touchstart", function () {
+                setInterval(handleReset, 0);
+            });
         } else {
             $("#shoot").hide();
             $("#canvas").click(function (evt) {
