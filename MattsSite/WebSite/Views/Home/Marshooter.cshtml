@@ -263,12 +263,40 @@
                         animate(ball, gun, canvas, context, x, y);
                     }
                 });
-                $(canvas).one("touchstop", function (e) {
+                $(canvas).one("touchleave", function (e) {
                     canvas.removeEventListener("touchmove");
                 });
 
             });
+            var shoot = document.getElementById("shoot");
+            shoot.addEventListener("click", function (e) {
+                if (gun.ammo > 0) {
+                    gun.ammo -= 1;
+                    var checkAim = willHitBird(ball.x, ball.y, birds);
+                    if (checkAim.hit) {
+                        birds[checkAim.id].fill = "yellow";
 
+                        animate(ball, gun, canvas, context, x, y);
+                    }
+
+                } else {
+                    alert("sorry, no more ammo");
+                }
+            });
+            shoot.addEventListener("touchstart", function (e) {
+                if (gun.ammo > 0) {
+                    gun.ammo -= 1;
+                    var checkAim = willHitBird(ball.x, ball.y, birds);
+                    if (checkAim.hit) {
+                        birds[checkAim.id].fill = "yellow";
+
+                        animate(ball, gun, canvas, context, x, y);
+                    }
+
+                } else {
+                    alert("sorry, no more ammo");
+                }
+            });
 
 
             $("#shoot").click(function (evt) {
