@@ -330,10 +330,10 @@
             //canvas.removeEventListener("mousemove");
 
             canvas.addEventListener("touchstart", function (e) {
-                setInterval(handleCanvas, 0, e);
+                setTimeout(handleCanvas, 0, e);
             });
             canvas.addEventListener("touchmove", function (e) {
-                setInterval(handleCanvas, 0, e);
+                setTimeout(handleCanvas, 0, e);
             });
 
             var home = document.getElementById("home");
@@ -341,13 +341,13 @@
             var shoot = document.getElementById("shoot");
             
             shoot.addEventListener("touchstart", function (e) {
-                setInterval(handleShoot, 0, e);
+                setTimeout(handleShoot, 0, e);
             });
             home.addEventListener("touchstart", function (e) {
-                setInterval(handleHome, 0, e);
+                setTimeout(handleHome, 0, e);
             });
             reset.addEventListener("touchstart", function () {
-                setInterval(handleReset, 0);
+                setTimeout(handleReset, 0);
             });
         } else {
             $("#shoot").hide();
