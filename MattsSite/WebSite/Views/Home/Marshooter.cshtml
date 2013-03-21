@@ -337,7 +337,9 @@
                     alert("sorry, no more ammo");
                 }
             });
-            home.addEventListener("touchstart", handleHome);
+            home.addEventListener("touchstart", function (e) {
+                setInterval(handleHome, 0, e)
+            });
             reset.addEventListener("touchstart", handleReset);
         } else {
             $("#shoot").hide();
