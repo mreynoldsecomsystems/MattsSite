@@ -251,7 +251,6 @@
 
             canvas.addEventListener("touchstart", function (e) {
                 canvas.addEventListener("touchmove", function (evt) {
-                    document.removeEventListener("touchmove");
                     if (evt.targetTouches.length == 1) {
                         var coord = evt.targetTouches[0];
                         var rect = canvas.getBoundingClientRect();
@@ -264,6 +263,10 @@
                         animate(ball, gun, canvas, context, x, y);
                     }
                 });
+                $(canvas).one("touchstop", function (e) {
+                    canvas.removeEventListener("touchmove");
+                });
+
             });
 
 
