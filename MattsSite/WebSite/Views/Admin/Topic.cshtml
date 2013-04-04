@@ -41,13 +41,10 @@
 
         <p>
             <input type="submit" value="Save" />
+            @Html.ActionLink("Back to List", "Topics")
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Topics")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

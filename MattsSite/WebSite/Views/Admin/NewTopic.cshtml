@@ -15,27 +15,22 @@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.TopicToken)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.TopicToken)
             @Html.ValidationMessageFor(model => model.TopicToken)
         </div>
-
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.TopicName)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.TopicName)
             @Html.ValidationMessageFor(model => model.TopicName)
         </div>
-
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.Body)
-        </div>
-        <div class="editor-field">
             @Html.TextAreaFor(model => model.Body, new { @class = "tinymce" })
             @Html.ValidationMessageFor(model => model.Body)
         </div>
+        
 
         <p>
             <input type="submit" value="Create" />
@@ -55,7 +50,11 @@
         $().ready(function () {
             $('textarea.tinymce').tinymce({
                 script_url: '../Scripts/tinymce/tiny_mce.js',
-                theme: "advanced"
+                theme: "advanced",
+                width: "300",
+                theme_advanced_resizing: true,
+                theme_advanced_resizing_min_height: 300,
+                theme_advanced_resizing_min_width: 300
 
             });
         });

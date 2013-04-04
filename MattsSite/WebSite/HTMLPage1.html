@@ -1,147 +1,103 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
     <title></title>
-    <style type="text/css">
-        body{
-            max-width: 100%;
-            height: 100%;
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            margin: 0 auto;
-        }
-        header, footer, #main > section, #main > article, #main > aside{
-            border: 1px solid #ccc;
-        }
-        header, footer{
-            height: 100px;
-        }
-        #main{
-            border: 1px solid #ccc;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: -moz-box;
-            display: flexbox;
-            -webkit-flex-direction: row;
-            -ms-flex-direction: row;
-            flex-direction: row;
-            -moz-box-direction: normal;
-            -moz-box-orient: horizontal;
-            -moz-box-pack: center;
-            -moz-box-align: stretch;
-            -webkit-align-items: stretch;
-            align-items: stretch;
-            -ms-flex-align: stretch;
-            -moz-box-flex:1;
-            align-content: stretch;
-            width: 100%;
-        }
-            #main > section{
-                width: 250px;
-                display: -webkit-flex;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -o-flex;
-                -moz-box-direction: normal;
-                -moz-box-orient: vertical;
-                -webkit-flex-direction: column;                
-                -ms-flex-direction: column;
-                -o-flex-direction: column;
-                flex-direction: column;
-                background: #eee;
-                width: 200px;
-                -moz-box-flex: 0;
-                -webkit-flex: none;
-                -ms-flex: none;
-                -o-flex: none;
-                flex: none;
-                -webkit-box-ordinal-group: 1;
-                -moz-box-ordinal-group: 1;
-                -webkit-order: 0;
-                -ms-flex-order: 0;
-                order: 0;
-            }
+    <meta charset="utf-8" />
 
-            #main > section > a{
-                border: 1px solid rgb(204, 204, 204);
-                -webkit-flex: 1;
-                -moz-box-flex: 1;
-                -ms-flex: 1;
-                -o-flex: 1;
-                flex: 1;
-                padding: 0 0.25em;
-                margin: 0 0.25em;
-                background: white;
-                display: -webkit-flex !important;
-                display: -moz-box !important;
-                display: -ms-flexbox;
-                display: -o-flex;
-                -moz-justify-content: center;
-                -ms-flex-line-pack: center;
-                -o-justify-content: center;
-                justify-content: center;
-                -webkit-align-items: center;
-                -moz-align-items: center;
-                -ms-align-items: center;
-                -o-align-items: center;
-                align-items: center;
-            }
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
 
-            #main > section > div > a{
-                
-                -ms-flex-item-align: stretch;
-                -ms-flex-line-pack: center;
-            }
+    <link href="/Content/style.css" rel="stylesheet" />
 
-            #main > article{
-                -webkit-box-ordinal-group: 2;
-                -moz-box-ordinal-group: 2;
-                -webkit-order: 1;
-                -ms-flex-order: 1;
-                order: 1;
-                -moz-box-flex: 1;                
-                -webkit-flex: 1 0 auto;
-                -ms-flex: 1 0 auto;
-                flex: 1 0 auto;
-            }
+    <link href="/Content/themes/base/css?v=9ZXjwUy1CQRG58ElnTagLroc4z1yN5ZSAvN8j9XUG_41" rel="stylesheet" />
 
-            #main > aside{
-                width: 250px;
-                -webkit-box-ordinal-group: 3;
-                -moz-box-ordinal-group: 3;
-                -webkit-order: 2;
-                -ms-flex-order: 2;
-                order: 2;
-                -moz-box-flex: 0;
-                -webkit-flex: 0 0 auto;
-                -ms-flex: 0 0 auto;
-                flex: 0 0 auto;
-            }
-    </style>
+
+
+
 </head>
 <body>
-    <header>
-        header
-    </header>
-    <div id="main">
-        <section>
-            <a href="#">link</a>
-            <a href="#">link</a>
-            <a href="#">link</a>
-            <a href="#">link</a>
-        </section>
-        <article>
-            <div><h1>main body</h1></div>
-        </article>
-        <aside>
-            <div>side</div>
-        </aside>
+    <div id="header">
+        <div class="logo">
+            <a href="/">matt reynolds</a>
+        </div>
+        <div class="login">
+            <a href="/Account/Register" id="registerLink">register</a><a href="/Account/Login" id="loginLink">log in</a>
+        </div>
     </div>
-    <footer>
-        <div>footer</div>
-    </footer>
+    <div class="container">
+        <div class="row">
+            <article>
+                <div class="content-wrapper clear-fix">
+                    <div>
+                        <hgroup class="title">
+                            <h1>home page.</h1>
+                            <h2></h2>
+                        </hgroup>
+                    </div>
+                    <h3></h3>
+                    <ol class="round">
+                        <li class="one">
+                            <h5>about me</h5>
+                            <p>Basic info about where I've been, and what I've been doing the past few years.</p>
+                            <a href="/Home/About">read more</a>
+                        </li>
+                        <li class="two">
+                            <h5>this is cool...</h5>
+                            <p>A small collection of technology that interests me...</p>
+                            <a href="/Blog">view blog</a>
+                        </li>
+                        <li class="three">
+                            <h5>my hobbies and interests</h5>
+                            <p>What makes me tick, and what I like to do when there's nothing to do...</p>
+                            <a href="/Home/Hobbies">read more</a>
+                        </li>
+                    </ol>
+                    <p>
+                        The standard Lorem Ipsum passage, used since the 1500s
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+                    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                    1914 translation by H. Rackham
+                    "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+                    Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+                    "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+                    1914 translation by H. Rackham
+                    "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
+                    </p>
+                </div>
+            </article>
+            <section class="four columns">
+                <a href="/">home</a>
+                <a href="/Home/About">about</a>
+                <a href="/Home/Contact">contact</a>
+                <a href="/Home/Marshooter/">eli's sweet taters</a>
+                <a href="/Blog">blog</a>
+            </section>
+            <aside class="three columns">
+                <div>tags will go here...</div>
+                <div>.NET 4.5</div>
+                <div><strong>ASP.NET 4.0</strong></div>
+                <div><strong>MVC4</strong></div>
+                <div>it might get a little crowded...</div>
+                <div>css</div>
+            </aside>
+        </div>
+        
+    </div>
+    <div id="footer">
+        <div class="content-wrapper">
+            <p>&copy; 2013 - Matt Reynolds</p>
+        </div>
+    </div>
+    <script src="/bundles/jquery?v=UgyEMAYOuSB9Bb6HcOEVHpd6fIIp54yF086SRNVcdIY1"></script>
+    <script src="/bundles/jqueryui?v=88PAb5lPpxjyhhnnZh1msJZp2DdoamOVEpZA-0uwC9E1"></script>
+    <script type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        $(".left-side").children("div").click(function (e) {
+            var link = $(e.target).children("a")[0];
+            window.location = $(link).attr("href");
+        });
+    </script>
 </body>
 </html>
